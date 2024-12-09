@@ -55,8 +55,7 @@ def index():
         vote_gain.append(post["party"])
 
     return render_template('index.html',
-                           title='E-voting system '
-                                 'using Blockchain and python',
+                           title='E-voting system ',
                            posts=posts,
                            vote_gain=vote_gain,
                            node_address=CONNECTED_SERVICE_ADDRESS,

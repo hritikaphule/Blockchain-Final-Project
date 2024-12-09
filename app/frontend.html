@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>E-voting System</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Existing HTML content -->
+
+    <script>
+        async function connectMetaMaskAndVote() {
+            // Check if MetaMask is installed
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request accounts from MetaMask
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const voterID = document.getElementById('voter_id').value;
+                    const party = document.getElementById('party_select').value;
+
+                    if (!voterID || party === 'select') {
+                        alert('Please select a political party and enter a voter ID.');
+                        return;
+                    }
+
+                    const account = accounts[0];
+                    const web3 = new Web3(window.ethereum);
+
+                    // Generate transaction details
+                    const transactionDetails = {
+                        from: account,
+                        to: '0x0000000000000000000000000000000000000000', // Replace with your contract address
+                        value: '0', // No ETH transferred
+                        data: web3.utils.utf8ToHex(`Vote: ${voterID}, Party: ${party}`)
+                    };
+
+                    // Send transaction
+                    const txHash = await ethereum.request({
+                        method: 'eth_sendTransaction',
+                        params: [transactionDetails]
+                    });
+
+                    // Send transaction details to the Python backend
+                    await fetch('/vote', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ voter_id: voterID, party: party, tx_hash: txHash })
+                    });
+
+                    alert('Vote successfully cast! Transaction Hash: ' + txHash);
+
+                    // Optionally refresh the page or update the results table dynamically
+                    location.reload();
+                } catch (error) {
+                    console.error(error);
+                    alert('An error occurred. Please try again.');
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask and try again.');
+            }
+        }
+
+        document.getElementById('vote_button').onclick = connectMetaMaskAndVote;
+    </script>
+</body>
+</html>

@@ -1,28 +1,178 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <header>
+      <a href="/">{{ title }}</a>
+      
+    </header>
+    
+    
+    <style>
+    header a {
+    font-size: 2.5rem; /* Increased font size */
+    font-weight: bold; /* Bold text */
+    color: white; /* Ensure text is visible on blue background */
+    }
+
+      
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        /* background-color: #f4f4f9; */
+        background-image: 'C:\Users\hriti\E-voting-system-using-blockchain-and-python\static\images\blockchain.jpg';
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #28a745;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+      }
+
+      header a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      header a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        width: 90%;
+        background-image: 'C:\Users\hriti\E-voting-system-using-blockchain-and-python\static\images\blockchain.jpg';
+        max-width: 1200px;
+        margin: 20px auto;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: #4417e6f1;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        font-weight: bold;
+      }
+
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+
+      .card {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .flash-message {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .flash-message.success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      .flash-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+
+      button {
+        background-color: #4417e6f1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #4417e6f1;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      table th, table td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 10px;
+      }
+
+      table th {
+        background-color: #4417e6f1;
+        color: white;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      table tr:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
   </head>
   <body>
-   
-    <center><a href="/"><h2>{{ title }}</h2></a></center>
-    <hr>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <center>
-   
-    {% for category, message in messages %}
-        {% if category=='error'%}
-          <li style="color: red">{{ message }} </li>
+    <a href="https://unsplash.com/photos/a-concept-showing-a-network-of-interconnected-blocks-of-data-depicting-a-cryptocurrency-blockchain-data-on-a-dark-background-3d-render-eT04zE32BMk" target="_blank" class="background-link"></a>
+    
+    <div class="navbar">
+      <div>
+        <a href="/">Home</a>
+      </div>
+      <div>
+        {% if session.get('user') %}
+        <span>Welcome, {{ session.get('user') }}!</span>
+        <a href="/logout">Logout</a>
         {% else %}
-          <li style="color: blue">{{ message }} </li>
+        <a href="/login">Login</a>
         {% endif %}
-      
-    {% endfor %}
-    </center>
-   
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
+      </div>
+    </div>
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div>
+        {% for category, message in messages %}
+        <div class="flash-message {{ 'success' if category != 'error' else 'error' }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </div>
   </body>
 </html>

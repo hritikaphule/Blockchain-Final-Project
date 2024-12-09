@@ -1,83 +1,5 @@
-# E-voting-system-using-blockchain-and-python
+# E-voting-system-using-blockchain
 
-## Outline
-1. Reference Research Paper
-    1. Abstract
-    2. Introduction
-    3. Blockchain
-    4. Ourposed System
-    5. Conclusion
-2. Implementaiton of Blockchain in E-voting system
-    1. About application
-    2. Structure of Blockchain
-    3. Chain the blocks
-    4. Blockchain Proof of work
-    5. Add blocks to the chain
-    6. Mining
-3. Instructions to run application
-4. References
-
-## 1. Reference Research Paper
-This project is based on the concept of research paper which was published in International Journal of Network Security & Its Applications (IJNSA) entitled **"A CONCEPTUAL SECURE BLOCKCHAIN- BASED ELECTRONIC VOTING SYSTEM"** by Ahmed Ben Ayed 
-
-### Review, Summary of  **"A Conceptual Secure Blockchain-based Electronic Voting System"** 
-[Paper Link](https://aircconline.com/ijnsa/V9N3/9317ijnsa01.pdf)
-OR
-[Researchgate] (https://www.researchgate.net/publication/341498272_A_CONCEPTUAL_SECURE_BLOCKCHAIN-BASED_ELECTRONIC_VOTING_SYSTEM)
-OR
-[This repository] ((https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/reference-paper/Blockchain_Voting_System20200318-112191-yzyxvw-with-cover-page-v2.pdf))
-
-#### Abstract
-This paper support the open source Blockchain technology to propose a design for a new electronic voting system that could be used in local or national elections.
-
-#### Introduction
-An e-Voting system has to have heightened security in order make sure it is available to voters but protected against outside influences changing votes from being cast, or keep a voter’s ballot from being tampered with. Many electronic voting systems rely on to hide the identity of voters. However, this technique does not provide total anonymity or integrity since many intelligence agencies around the world control different parts of the Internet which can allow them to identify or intercept votes. 
-
-#### Blockchain
-Blockchain was first introduced by Satoshi Nakamoto (a pseudonym), who proposed a peer-to-peer payment system that allows cash transactions through the Internet without relying on trust or the need for a financial institution.
-
-Blockchain is an ordered data structure that contains blocks of transactions. Each block in the chain is linked to the previous block in the chain. The first block in the chain is referred to as the foundation of the stack. Each new block created gets layered on top of the previous block to form a stack called a Blockchain. 
-
-
-All of the magic lies in the way this data is stored and added to the blockchain. A blockchain is essentially a linked-list containing ordered-data, with some constraints like below;
-
-* Blocks can't be modified once added; in other words, it is "append-only."
-* There are specific rules for appending data to it.
-* It's distributed in architecture.
-* Enforcing these constraints yields some highly desirable characteristics:
-
-* Immutability and durability of data
-* No single point of control or failure
-* A verifiable audit trail of the order in which data was added
-
-Each block in the stack is identified by a hash placed on the header. This hash is generated using the Secure Hash Algorithm (SHA-256) to generate an almost idiosyncratic fixed-size 256-bit hash.
-![image.png](https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/screenshots/hash_function.png)
-
-Each header contains information that links a block to its previous block in the chain, which creates a chain linked to the very first block ever created, which is referred to as the foundation. The primary identifier of each block is the encrypted hash in its header. A digital fingerprint that was made combining two types of information: the information concerning the new block created, as well as the previous block in the chainAs soon as a block is created, it is sent over to the Blockchain. The system will keep an eye on incoming blocks and continuously update the chain when new blocks arrive.
-![image.png](https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/screenshots/hash_block.png)
-
-#### Purposed System
-* Authentication: Only people already registered to vote can cast a vote. Our system will not
-support a registration process. Registration usually requires verification of certain information
-and documents to comply with current laws, which could not be done online in a secure manner.
-Therefore, the system should be able to verify voters’ identities against a previously verified
-database, and then let them vote only once.
-* Anonymity: The e-Voting system should not allow any links between voters’ identities and
-ballots. The voter has to remain anonymous during and after the election.
-* Accuracy: Votes must be accurate; every vote should be counted, and can’t be changed,
-duplicated or removed.
-* Verifiability: The system should be verifiable to make sure all votes are counted correctly.
-Beside the main requirement, our solution supports mobility, flexibility, and efficiency. However,
-we will limit this paper’s discussion to the four main requirements. 
-![image.png](https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/screenshots/purposed_system.png)
-
-To ensure that the system is secure, the block will contain the previous voter’s information. If any of the blocks were compromised, then it would be easy to find out since all blocks are connected to each other. The Blockchain is decentralized and cannot be corrupted; no single point of failure exists. The Blockchain is where the actual voting takes place. The user’s vote gets sent to one of the nodes on the system, and the node then adds the vote to the Blockchain. The voting system will have a node in each district to ensure the system is decentralized.
-
-#### CONCLUSION
- This paper proposed an electronic voting system based on the Blockchain technology. The Blockchain will be publicly verifiable and distributed in a way that no one will be able to corrupt it.
-
-
-<hr style="border:2px solid blue"> </hr>
 
 # Implementaiton of Blockchain in E-voting system
 
@@ -115,7 +37,6 @@ class Block:
 
 ### Structure of Blockchain
 
-![image.png](https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/screenshots/structure.png)
 ### 1. Digital fingerprints to the blocks
 We'd like to prevent any kind of tampering in the data stored inside the block, and detection is the first step to that. To detect if the data in the block is tampered, we can use cryptographic hash functions.
 
@@ -132,7 +53,7 @@ def compute_hash(self):
 We need a mechanism to make sure that any change in the previous blocks invalidates the entire chain. The Bitcoin way to do this is creating dependency among consecutive blocks by chaining them with the hash of block immediately previous to them. By chaining here, we mean to include the hash of the previous block in the current block in a new field called previous_hash.
 
 Okay, if every block is linked to the previous block by the previous_hash field, what about the very first block? The very first block is called the genesis block and can be generated either manually or by some unique logic. Let's add the previous_hash field to the Block class and implement the initial structure of our Blockchain class.
-![image.png](https://github.com/adhikarir/E-voting-system-using-blockchain-and-python/blob/master/screenshots/block.png)
+
 Now, if the content of any of the previous blocks changes,
 
 * The hash of that previous block would change.
