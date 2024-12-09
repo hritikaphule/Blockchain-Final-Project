@@ -1,7 +1,10 @@
 # E-voting-system-using-blockchain
+Group memebers:
+Hritika Phule(CWID:828429332)
+Hitesh Mali(CWID:885166850)
+Snigdha Aravapalli(CWID:847086824)
 
-
-# Implementaiton of Blockchain in E-voting system
+# Implementaiton 
 
 ## About Applicaiton
 Let us briefly define the scope of our mini-application. The goal is to build an application that allows Voter to vote for the party they want with their Voter ID. One voter can only vote one time with their Unique Voter ID. Since the voted information will be stored on the blockchain, it'll be immutable and permanent. Users will interact with the application via a simple web interface.
