@@ -4,7 +4,7 @@ Hritika Phule(CWID:828429332)
 Hitesh Mali(CWID:885166850)
 Snigdha Aravapalli(CWID:847086824)
 
-# Implementaiton 
+# Implementation
 
 ## About Applicaiton
 Let us briefly define the scope of our mini-application. The goal is to build an application that allows Voter to vote for the party they want with their Voter ID. One voter can only vote one time with their Unique Voter ID. Since the voted information will be stored on the blockchain, it'll be immutable and permanent. Users will interact with the application via a simple web interface.
@@ -81,13 +81,38 @@ To add a block to the chain, we'll first have to verify that,
 Mining, in the context of blockchain technology, is the process of adding transactions to the large distributed public ledger of existing transactions, known as the blockchain. The term is best known for its association with bitcoin, though other technologies using the blockcahin employ mining.
 
 The transactions will be initially stored as a pool of unconfirmed transactions. The process of putting the unconfirmed transactions in a block and computing Proof of Work is known as the mining of blocks. Once the nonce satisfying our constraints is figured out, we can say that a block has been mined, and it can be put into the chain.
+## Enhancements Inplemented
+### 1.Digital Fingerprints for Data Integrity:
+Integrated SHA-256 cryptographic hash function to compute unique hashes for each block.
+Stored the hash as a digital fingerprint to detect tampering of block data.
+
+### 2.Chaining of Blocks:
+Added previous_hash field to link blocks sequentially, forming a chain.
+Ensured that any change in one block invalidates subsequent blocks by propagating hash mismatches.
+
+### 3.Proof of Work (PoW):
+Implemented a consensus algorithm requiring hashes to meet a difficulty constraint (e.g., starting with n leading zeroes).
+Introduced a nonce field to enable iterative hash computations to satisfy PoW constraints.
+
+### 4.Block Addition Validation:
+Verified blocks before adding them to the chain by:
+
+Ensuring data integrity with correct Proof of Work.
+Maintaining proper sequence through the previous_hash field.
+
+### 5.Mining Mechanism:
+Designed a mining process to:
+
+Collect unconfirmed transactions into a block.
+Compute the valid nonce for satisfying Proof of Work.
+Add mined blocks to the blockchain.
 
 ## Instructions to run the application
 
 Clone the project,
 
 ```sh
-$ git clone https://github.com/adhikarir/E-voting-system-using-blockchain-and-python.git
+$ git clone https://github.com/hritikaphule/Blockchain-Final-Project.git 
 ```
 
 Install the dependencies,
