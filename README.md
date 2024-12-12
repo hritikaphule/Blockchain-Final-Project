@@ -1,7 +1,11 @@
 # Decentralised Voting (dVoting)
 
 A decentralised voting system based on [Ethereum blockchain](https://ethereum.org/dapps/) technology.
-
+## Team Members
+1. Hritika Phule
+2. Hitesh Mali
+3. Snigdha Aravapalli
+ 
 ## System Workflow
 
 A brief explanation on the basic workflow of the application.
@@ -14,6 +18,35 @@ A brief explanation on the basic workflow of the application.
 
 
 ---
+## Features implemented:
+```shell 
+   1.	Blockchain Network Deployment:
+	•	Admin can launch the system and deploy it on an EVM-compatible blockchain network.
+
+	2.	Election Instance Creation:
+	•	Admin can create an election instance with configurable details, including candidate information, and initiate the election process.
+ 
+	3.	Voter Registration Process:
+	•	Voters can connect to the blockchain network and register themselves by providing their details (blockchain account address, name, phone number).
+ 
+	4.	Admin Verification Panel:
+	•	Admin has access to a verification panel to view registered voter details.
+	•	Admin can validate and approve registered voters based on their provided information.
+ 
+	5.	Voter Approval Mechanism:
+	•	Only approved voters become eligible to participate in the election and cast their votes.
+
+	6.	Vote Casting Functionality:
+	•	Registered and approved voters can cast their votes for a candidate of their choice through a voting interface.
+
+	7.	Election Closure:
+	•	Admin can end the election once the voting period is over or based on the election scale.
+
+	8.	Result Announcement:
+	•	After the election ends, the system calculates and displays the results.
+	•	The winning candidate is prominently highlighted on the results page.
+```
+
 
 ## Setting up the development environment
 
@@ -46,7 +79,7 @@ A brief explanation on the basic workflow of the application.
 1. Clone this repository
 
    ```shell
-   git clone https://github.com/arlbibek/dVoting.git
+   git clone https://github.com/hritikaphule/Blockchain-Voting.git
    cd dVoting
    ```
 
